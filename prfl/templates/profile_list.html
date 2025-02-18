@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile List</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { max-width: 600px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #28a745; color: white; }
+        input, button { margin: 5px 0; padding: 8px; width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Profile List</h2>
+
+        <!-- <table>
+            <tr>
+                <th>Username</th>
+                <th>Bio</th>
+                <th>Email</th>
+                <th>Location</th>
+                <th>Profile Pic</th>
+            </tr>
+            {% for profile in profiles %}
+            <tr>
+                <td>{{ profile.User.username }}</td>
+                <td>{{ profile.bio }}</td>
+                <td>{{ profile.email }}</td>
+                <td>{{ profile.location }}</td>
+                <td>
+                    {% if profile.profile_pics %}
+                        <img src="{{ profile_pics.url }}" width="50">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+     -->
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Bio</th>
+                <th>Email</th>
+                <th>Location</th>
+                <th>Profile Pic</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profile in profiles %}
+            <tr>
+                <td>{{ profile.user.username }}</td>  <!-- Fetch username from related User model -->
+                <td>{{ profile.bio }}</td>
+                <td>{{ profile.user.email }}</td>  <!-- Fetch email from related User model -->
+                <td>{{ profile.location }}</td>
+                <td>
+                    {% if profile.profile_pics %}
+                        <img src="{{ profile.profile_pics.url }}" alt="Profile Pic" width="50">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html> 
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience List</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { max-width: 600px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #28a745; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Work Experience List</h2>
+        <table>
+            <tr>
+                <th>Company Name</th>
+                <th>Role</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Description</th>
+            </tr>
+            {% for work in work_experiences %}
+            <tr>
+                <td>{{ work.company_name }}</td>
+                <td>{{ work.role }}</td>
+                <td>{{ work.start_date }}</td>
+                <td>{{ work.end_date }}</td>
+                <td>{{ work.description }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{% url 'create_work' %}">Add New Work Experience</a>
+    </div>
+</body>
+</html>

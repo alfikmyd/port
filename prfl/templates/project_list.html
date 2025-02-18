@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project List</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { max-width: 600px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #28a745; color: white; }
+        img { width: 100px; height: auto; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Project List</h2>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Project Link</th>
+            </tr>
+            {% for project in projects %}
+            <tr>
+                <td>{{ project.title }}</td>
+                <td>{{ project.description }}</td>
+                <td>
+                    {% if project.project_image %}
+                        <img src="{{ project.project_image.url }}" alt="Project Image">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </td>
+                <td><a href="{{ project.project_link }}" target="_blank">View Project</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{% url 'create_project' %}">Add New Project</a>
+    </div>
+</body>
+</html>
